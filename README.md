@@ -70,20 +70,24 @@ Even though we used the public address, the terminal will display the _private_ 
 
 ##### Download Docker
 
-Using the command `curl` we will download the Docker from a URL.
+Using the command `curl` we will download the Docker from a URL. Here we are downloading using `curl` applying 3 security keys using the script from the website, and piping it directly into the shell. 
 <pre><code> curl -sSL https://get.docker.com | sh </code></pre>
-Here we are downloading using `curl` applying 3 security keys using the script from the website, and piping it directly into the shell. 
 
-<pre><code> sudo usermod -aG docker ubuntu </code></pre>
 We modify the user by adding ubuntu to use docker.
+<pre><code> sudo usermod -aG docker ubuntu </code></pre>
 
-`docker -v`
-`docker pull jupyter/datascience-notebook`
 This downloads the docker image, defined by the Jupyter team
+<pre><code>docker -v
+docker pull jupyter/datascience-notebook </code></pre>
 
-<pre><code> docker run -v /home/ubuntu:/home/jovyan -p 8888:8888 -d jupyter/datascience-notebook</code></pre>
 This calls docker to run on the ubuntu server through port 8888.
+<pre><code> docker run -v /home/ubuntu:/home/jovyan -p 8888:8888 -d jupyter/datascience-notebook</code></pre>
+It will return a container ID. Another way to check find the container ID is by running `docker ps -a` which lists the beginning sequence of the Container. The first four characters is enough for identification, the container_id.
 
-<pre><code> docker exec a35f jupyter notebook list </code></pre>
+Next, docker is called to execute the jupyter image located at the containter_id. 
+<pre><code> docker exec container_id jupyter notebook list </code></pre>
+
+A url address with http://localhost:8888/?token= ... will generate. 
+Open a browser window and relace the localhost with the public IP address from the created AWS serve. 
 
 
