@@ -101,4 +101,11 @@ A url address with http://localhost:8888/?token= ... will generate.
 Open a browser window and relace the localhost with the public IP address from the created AWS serve, along with the token provided in the url. If all goes well, you should now have Jupyter up and running on your browser. Go forth data scientist! 
 
 
+## Budget
+While AWS offers 750 hours per month for the first 12 months if using t2.micro, it would behoove us to create a budget detailing the costs for running a Jupyter Notebook Server for 3 months. Since the Jupyter Data Science Notebook itself is relatively lightweight, the type of computing the user is hoping to do as well as the quantity of data to be processed will inform which type of EC2 instance other than t2.micro would be chosen.
+Our current selection looks at the most cost efficient EC2 instance for Compute Optimized, Memory Optimized, and Storage Optimized.
 
+| Instance Type | Name | vCPU | Memory (GiB) | On-Demand ($/hour) | (On-Demand ($/3mos) | Spot Instances- Linux/UNIX ($/hour) | Spot Instances- Linux/UNIX ($/3mos) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| General Purpose | t2.micro | 1 | 1 | .0116 | 25.40 | .0033 | 7.23 |
+| Compute Optimized | c4.large | 2 | 3.75 | .10 | 219.00 | .03 | 62.85 |
