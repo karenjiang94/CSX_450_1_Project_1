@@ -20,6 +20,8 @@ As Prof. Joshua Cook is an analogy afficionado, this readme will attempt to incl
 - Docker: "Another layer of abstraction" [What is Docker?](https://www.docker.com/what-docker)
 - Jupyter: Julia Python R [Jupyter Notebook](http://jupyter.org)
 
+## Procedure
+
 ##### Configuring a Key Pair
 
 Generate a SSH key pair on your local system, Terminal for MacOS users and [GitBASH](https://git-for-windows.github.io) for Windows.
@@ -33,7 +35,7 @@ This creates a key id-rsa and lock id-rsa.pub pair. The lock will be placed on t
 After creating an account with Amazon Web Services, we will select *EC2* Elastic Cloud Computing to have Amazon reserve a little chunk of computer on their server farm. 
 On the left hand side-bar, we will import our key pair we created above. 
 
-Next, we'll be creating our security groups and adding Inbound rules. 
+Next, we'll be creating our security groups and adding Inbound rules. Create a clever name, or at clear and moderately descriptive. Like "ucla_data_sci". 
 
 | Type       | Protocol   |  Port Range |  Source      | Description |
 | --- | --- | --- | --- | --- |
@@ -42,4 +44,46 @@ Next, we'll be creating our security groups and adding Inbound rules.
 | SSH        | TCP        |  22         |   Anywhere   |      (SSH)  |                                
 | Custom TCP | TCP        |  2376       |   Anywhere   |    (Docker) |
 | Custom TCP | TCP        |  27016      |   Anywhere   |     (Mongo) |   
+
+
+
+##### Creating an Instance
+
+1. Choose an AMI [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+   We will be selecting Ubuntu ["I am what I am because of who we all are"](https://www.ubuntu.com/about/about-ubuntu)
+2. RAM t2.micro (1 GiB)
+3. CPU 1 Instance (default setting)
+4. HardDrive 30 GiB.
+5. Tags (default setting)
+6. Configure Security Group. Select the previously create security group
+
+Launch your instance with an existing key pair, name your instance, and then we're ready to go!
+
+View the instance you just created and locate the _public_ IP address. 
+
+##### Connect terminal to IP
+
+In your Terminal (or GitBash), run:
+
+<pre><code> ssh ubuntu@your_IP_Address </code></pre>
+Even though we used the public address, the terminal will display the _private_ address. 
+
+##### Download Docker
+
+Using the command `curl` we will download the Docker from a URL.
+<pre><code> curl -sSL https://get.docker.com | sh </code></pre>
+Here we are downloading using `curl` applying 3 security keys using the script from the website, and piping it directly into the shell. 
+
+<pre><code> sudo usermod -aG docker ubuntu </code></pre>
+We modify the user by adding ubuntu to use docker.
+
+`docker -v`
+`docker pull jupyter/datascience-notebook`
+This downloads the docker image, defined by the Jupyter team
+
+<pre><code> docker run -v /home/ubuntu:/home/jovyan -p 8888:8888 -d jupyter/datascience-notebook</code></pre>
+This calls docker to run on the ubuntu server through port 8888.
+
+<pre><code> docker exec a35f jupyter notebook list </code></pre>
+
 
