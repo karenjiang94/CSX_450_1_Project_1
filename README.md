@@ -1,7 +1,7 @@
 # CSX_450_1_Project_1
 
 ## Data Science Architecture Blueprint
-![AWS Diagram](https://imgur.com/a/LofzQ)
+![AWS Diagram](https://i.imgur.com/Fe31rYO.png)
 
 ## TABLE of CONTENTS
 * SSH Keys
