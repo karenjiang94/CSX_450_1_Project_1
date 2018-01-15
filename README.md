@@ -98,7 +98,11 @@ Next, docker is called to execute the jupyter image located at the containter_id
 <pre><code> docker exec container_id jupyter notebook list </code></pre>
 
 A url address with http://localhost:8888/?token= ... will generate. 
-Open a browser window and relace the localhost with the public IP address from the created AWS serve, along with the token provided in the url. If all goes well, you should now have Jupyter up and running on your browser. Go forth data scientist! 
+Open a browser window and relace the localhost with the public IP address from the created AWS serve, along with the token provided in the url. If all goes well, you should now have Jupyter up and running on your browser. Go forth, data scientist! 
+
+##### Jupyter Notebook Security Concern
+To be completely honest, I am not sure where our security concerns are. A few brought up during class were whether or not we would lose data once we terminate an instance/create a new one. 
+Another concern, which may not be related to Jupyter is how we can access our notebooks through which ports.
 
 
 ## Budget
@@ -121,4 +125,3 @@ Spot Instances
 | Memory Optimized | r3.large | 2 | 15 | .166 | 363.54 | .03 | 65.70 |
 | Storage Optimized | i3.large | 2 | 15.25 | .156 | 341.64 | .0468 | 102.49 |
 
-__On Demand__ 
