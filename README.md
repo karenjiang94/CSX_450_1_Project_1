@@ -105,7 +105,20 @@ Open a browser window and relace the localhost with the public IP address from t
 While AWS offers 750 hours per month for the first 12 months if using t2.micro, it would behoove us to create a budget detailing the costs for running a Jupyter Notebook Server for 3 months. Since the Jupyter Data Science Notebook itself is relatively lightweight, the type of computing the user is hoping to do as well as the quantity of data to be processed will inform which type of EC2 instance other than t2.micro would be chosen.
 Our current selection looks at the most cost efficient EC2 instance for Compute Optimized, Memory Optimized, and Storage Optimized.
 
+AWS offers several pricing options, [On-Demand](https://aws.amazon.com/ec2/pricing/on-demand/), [Spot Instances](https://aws.amazon.com/ec2/spot/pricing/), [Reserved Instances](https://aws.amazon.com/ec2/pricing/reserved-instances/pricing/), and [Dedicated Hosts](https://aws.amazon.com/ec2/dedicated-hosts/pricing/). Reserved Instances and Dedicated Hosts purchasing are packaged in 1-year or 3-year terms, so we will exclusively compare On-Demand pricing and Spot Instances.  
+
+On-Demand
+>With On-Demand instances, you pay for compute capacity by per hour or per second depending on which instances you run. No longer-term commitments or upfront payments are needed. You can increase or decrease your compute capacity depending on the demands of your application and only pay the specified per hourly rates for the instance you use.
+
+Spot Instances
+>Amazon EC2 Spot instances are spare compute capacity in the AWS cloud available to you at steep discounts compared to On-Demand prices. EC2 Spot enables you to optimize your costs on the AWS cloud and scale your application's throughput up to 10X for the same budget. By simply selecting Spot when launching EC2 instances, you can save up-to 90% on On-Demand prices.
+
+
 | Instance Type | Name | vCPU | Memory (GiB) | On-Demand ($/hour) | (On-Demand ($/3mos) | Spot Instances- Linux/UNIX ($/hour) | Spot Instances- Linux/UNIX ($/3mos) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | General Purpose | t2.micro | 1 | 1 | .0116 | 25.40 | .0033 | 7.23 |
-| Compute Optimized | c4.large | 2 | 3.75 | .10 | 219.00 | .03 | 62.85 |
+| Compute Optimized | c4.large | 2 | 3.75 | .10 | 219.00 | .0287 | 62.85 |
+| Memory Optimized | r3.large | 2 | 15 | .166 | 363.54 | .03 | 65.70 |
+| Storage Optimized | i3.large | 2 | 15.25 | .156 | 341.64 | .0468 | 102.49 |
+
+__On Demand__ 
