@@ -2,6 +2,7 @@
 
 ## Data Science Architecture Blueprint
 
+
 ## TABLE of CONTENTS
 * SSH Keys
 * Amazon EC2
@@ -52,6 +53,7 @@ Next, we'll be creating our security groups and adding Inbound rules. Create a c
 1. Choose an AMI [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
    We will be selecting Ubuntu ["I am what I am because of who we all are"](https://www.ubuntu.com/about/about-ubuntu)
 2. RAM t2.micro (1 GiB)
+>For the first 12 months following your AWS sign-up date, you get up to 750 hours of micro instances each month. When your free usage tier expires or if your usage exceeds the free tier restrictions, you pay standard, pay-as-you-go service rates.
 3. CPU 1 Instance (default setting)
 4. HardDrive 30 GiB.
 5. Tags (default setting)
