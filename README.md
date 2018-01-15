@@ -51,16 +51,16 @@ Next, we'll be creating our security groups and adding Inbound rules. Create a c
 
 ##### Creating an Instance
 
-1. *Choose AMI* [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+1. __*Choose AMI:*__ [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
    We will be selecting Ubuntu Server 16.04. ["I am what I am because of who we all are"](https://www.ubuntu.com/about/about-ubuntu)
-2. *Choose Instance Type* t2.micro (1 GiB)
+2. __*Choose Instance Type:*__ t2.micro (1 GiB)
 >> For the first 12 months following your AWS sign-up date, you get up to 750 hours of micro instances each month. When your free usage tier expires or if your usage exceeds the free tier restrictions, you pay standard, pay-as-you-go service rates.
-3. *Configure Instance* Number of instances: **1** (Everything else remains in default setting)
-4. *Add Storage* Size(GiB) **30** (Everything else remains in default settings)
+3. __*Configure Instance:*__ Number of instances: **1** (Everything else remains in default setting)
+4. __*Add Storage:*__ Size (GiB) **30** (Everything else remains in default settings)
 >> Free tier eligible customers can get up to 30 GB of EBS General Purpose (SSD) or Magnetic storage. Learn more about free usage tier eligibility and usage restrictions.
-5. *Add Tags* (default setting)
-6. *Configure Security Group* Select an existing security group. The option to select the security group we just created, named "ucla_data_sci" should appear. This is the one we pick.
-7. *Review* You can view the Security Groups, Instance Details, Storage, Tags, to ensure the confirm the previous selections. Otherwise, looking good, good looking.
+5. __*Add Tags:*__ (default setting)
+6. __*Configure Security Group:*__ Select an existing security group. The option to select the security group we just created, named "ucla_data_sci" should appear. This is the one we pick.
+7. __*Review:*__ You can view the Security Groups, Instance Details, Storage, Tags, to ensure the confirm the previous selections. Otherwise, looking good, good looking.
 
 Finally, launch your instance with an existing key pair, acknowledge and accept, and then we're ready to go!
 
