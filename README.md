@@ -51,18 +51,20 @@ Next, we'll be creating our security groups and adding Inbound rules. Create a c
 
 ##### Creating an Instance
 
-1. Choose an AMI [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
-   We will be selecting Ubuntu ["I am what I am because of who we all are"](https://www.ubuntu.com/about/about-ubuntu)
-2. RAM t2.micro (1 GiB)
+1. *Choose AMI* [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+   We will be selecting Ubuntu Server 16.04. ["I am what I am because of who we all are"](https://www.ubuntu.com/about/about-ubuntu)
+2. *Choose Instance Type* t2.micro (1 GiB)
 >> For the first 12 months following your AWS sign-up date, you get up to 750 hours of micro instances each month. When your free usage tier expires or if your usage exceeds the free tier restrictions, you pay standard, pay-as-you-go service rates.
-3. CPU 1 Instance (default setting)
-4. HardDrive 30 GiB.
-5. Tags (default setting)
-6. Configure Security Group. Select the previously create security group
+3. *Configure Instance* Number of instances: **1** (Everything else remains in default setting)
+4. *Add Storage* Size(GiB) **30** (Everything else remains in default settings)
+>> Free tier eligible customers can get up to 30 GB of EBS General Purpose (SSD) or Magnetic storage. Learn more about free usage tier eligibility and usage restrictions.
+5. *Add Tags* (default setting)
+6. *Configure Security Group* Select an existing security group. The option to select the security group we just created, named "ucla_data_sci" should appear. This is the one we pick.
+7. *Review* You can view the Security Groups, Instance Details, Storage, Tags, to ensure the confirm the previous selections. Otherwise, looking good, good looking.
 
-Launch your instance with an existing key pair, name your instance, and then we're ready to go!
+Finally, launch your instance with an existing key pair, acknowledge and accept, and then we're ready to go!
 
-View the instance you just created and locate the _public_ IP address. 
+View the instance you just created, give it a cool name, and locate the _public_ IP address. 
 
 ##### Connect terminal to IP
 
@@ -76,11 +78,16 @@ Even though we used the public address, the terminal will display the _private_ 
 Using the command `curl` we will download the Docker from a URL. Here we are downloading using `curl` applying 3 security keys using the script from the website, and piping it directly into the shell. 
 <pre><code> curl -sSL https://get.docker.com | sh </code></pre>
 
+Log out with the command `logout`, which will terminate the connection to the AWS server. 
+Log back in by calling the same function above `ssh ubuntu@your_IP_Address`.
+
 We modify the user by adding ubuntu to use docker.
 <pre><code> sudo usermod -aG docker ubuntu </code></pre>
 
+Check the docker version with `docker -v`
+>Docker version 18.01.0-ce, build 03596f5
+
 This downloads the docker image, defined by the Jupyter team
-<pre><code>docker -v
 docker pull jupyter/datascience-notebook </code></pre>
 
 This calls docker to run on the ubuntu server through port 8888.
