@@ -11,9 +11,8 @@
 * Docker
 * Jupyter
 
-Before delving into the nitty gritty tasks involved in being a data scientist, this module will help users set up the correct infrastructure with the end goal of accessing Jupyter Data Science Notebook through Docker connected to AWS running on Ubuntu through an SSH on the user's personal platform.(Are there enough prepositions in that sentence?)
+Before delving into the nitty gritty tasks involved in being a data scientist, this module will help users set up the correct infrastructure with the end goal of accessing Jupyter Data Science Notebook through Docker connected to AWS running on Ubuntu through an SSH on the user's personal platform. (Are there enough prepositions in that sentence?)
 
-As Prof. Joshua Cook is an analogy afficionado, this readme will attempt to include an excessive amount of analogies. 
 
 ## KEY TERMS
 - AWS: [Amazon Web Service](https://aws.amazon.com/)
@@ -26,16 +25,18 @@ As Prof. Joshua Cook is an analogy afficionado, this readme will attempt to incl
 ##### Configuring a Key Pair
 
 Generate a SSH key pair on your local system, Terminal for MacOS users and [GitBASH](https://git-for-windows.github.io) for Windows.
-
+This creates a key id-rsa and lock id-rsa.pub pair. The lock will be placed on the AWS server, which will then enable us to access and operate off of Ubuntu from Amazon.
 <pre><code>ssh key-gen </code></pre>
 
-This creates a key id-rsa and lock id-rsa.pub pair. The lock will be placed on the AWS server, which will then enable us to access. (This analogy already wrote itself, no credit)
+To access the key, we will `cat` the "lock" that will be placed on the Amazon server.
+<pre><code>cat ~/.ssh/id_rsa.pub </code></pre> 
 
-##### Amazon EC2
+>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqux91lz/ju4G8B4VhMesVq6bNpDPic0nAPjmRk+TjLkIPjNRXClqeB+NSU8a3zPXec0yACwj3qyOl526UDR0oC4xJruRWT4Y4YS6SdDqHqZeEQ1mvzDYZ9zZW9GvfCrMXKlBI9rH6ZEqmPj54GoylGuhBOEm63lMbx0126n2fuMpqZlCUK+4SLbGTKXIGPHyX9OvZRQ+qRI4XJweLl/7qN3F6ZE1uFsWkoUtj1EU+Fw+sJW3dcyDMCaV1ufnpyEnBZAhMLGG3c2hMr60MPzlpGYW/szLX/r0A2G1ZF9P0PgEyMeVZevQTntUR+ozYsAj9byt9avK+jCBW2us/EtRb karenjiang94@Karens-MacBook-Pro-7.local
 
 After creating an account with Amazon Web Services, we will select *EC2* Elastic Cloud Computing to have Amazon reserve a little chunk of computer on their server farm. 
-On the left hand side-bar, we will import our key pair we created above. 
+On the left hand side-bar, we will import our key pair we created above, and paste the content into *Public key contents*. 
 
+##### Security Groups
 Next, we'll be creating our security groups and adding Inbound rules. Create a clever name, or at clear and moderately descriptive. Like "ucla_data_sci". 
 
 | Type       | Protocol   |  Port Range |  Source      | Description |
