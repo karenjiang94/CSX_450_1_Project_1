@@ -35,11 +35,11 @@ On the left hand side-bar, we will import our key pair we created above.
 
 Next, we'll be creating our security groups and adding Inbound rules. 
 
-| Type     |   Protocol   |  Port Range  |  Source   |  Description |
+| Type       | Protocol   |  Port Range |  Source      | Description |
 | --- | --- | --- | --- | --- |
-| HTTP      |  TCP        |  80         |   Anywhere     |  (HTTP)|
+| HTTP       | TCP        |  80         |   Anywhere   |  (HTTP)     |
 | Custom TCP | TCP        |  8888       |   Anywhere   |   (Jupyter) |
-| SSH         TCP          22            Anywhere                     (SSH)                                   
-Custom TCP  TCP          2376          Anywhere                     (Docker)
-Custom TCP  TCP          27016         Anywhere                     (Mongo)    
+| SSH        | TCP        |  22         |   Anywhere   |      (SSH)  |                                
+| Custom TCP | TCP        |  2376       |   Anywhere   |    (Docker) |
+| Custom TCP | TCP        |  27016      |   Anywhere   |     (Mongo) |   
 
